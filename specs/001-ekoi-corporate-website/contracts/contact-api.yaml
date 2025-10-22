@@ -1,0 +1,237 @@
+openapi: 3.0.3
+info:
+  title: EKOI Corporate Website Contact API
+  description: API for handling contact form submissions with bot prevention and Slack integration
+  version: 1.0.0
+  contact:
+    name: EKOI Development Team
+    email: dev@ekoi.com
+
+servers:
+  - url: https://ekoi.com/api
+    description: Production
+  - url: https://preview.ekoi.com/api
+    description: Staging/Preview
+  - url: http://localhost:3000/api
+    description: Local Development
+
+paths:
+  /contact:
+    post:
+      summary: Submit contact form
+      description: |
+        Handles contact form submissions from the website.
+        Implements multi-layer bot prevention (honeypot, reCAPTCHA, rate limiting).
+        Sends notifications to Slack webhook.
+      operationId: submitContactForm
+      tags:
+        - Contact
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/ContactFormRequest'
+            examples:
+              productInquiry:
+                summary: Product Inquiry
+                value:
+                  name: "Taro Yamada"
+                  email: "taro.yamada@company.co.jp"
+                  company: "Tech Innovations Inc"
+                  phone: "+81-90-1234-5678"
+                  inquiryType: "product"
+                  message: "I'm interested in the H100 8-GPU server configuration for our AI research lab."
+                  language: "en"
+                  recaptchaToken: "03AGdBq25..."
+              partnershipInquiry:
+                summary: Partnership Inquiry
+                value:
+                  name: "John Smith"
+                  email: "john.smith@cloudprovider.com"
+                  company: "Cloud Solutions Corp"
+                  inquiryType: "partnership"
+                  message: "We'd like to discuss a potential partnership for our data center facilities."
+                  language: "en"
+                  recaptchaToken: "03AGdBq26..."
+      responses:
+        '200':
+          description: Contact form submitted successfully
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ContactFormSuccessResponse'
+              example:
+                success: true
+                message: "Thank you for contacting us. We'll respond within 24 hours."
+        '400':
+          description: Invalid request data
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                validationError:
+                  summary: Validation Error
+                  value:
+                    success: false
+                    error: "Validation failed"
+                    details:
+                      - field: "email"
+                        message: "Invalid email address"
+                      - field: "message"
+                        message: "Message must be at least 10 characters"
+                honeypotDetected:
+                  summary: Bot Detected (Honeypot)
+                  value:
+                    success: false
+                    error: "Invalid submission"
+        '403':
+          description: Bot prevention triggered or rate limit exceeded
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              examples:
+                recaptchaFailed:
+                  summary: reCAPTCHA Verification Failed
+                  value:
+                    success: false
+                    error: "Security verification failed. Please try again."
+                rateLimitExceeded:
+                  summary: Rate Limit Exceeded
+                  value:
+                    success: false
+                    error: "Too many submissions. Please try again in 1 hour."
+        '500':
+          description: Server error
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/ErrorResponse'
+              example:
+                success: false
+                error: "An error occurred while processing your request. Please try again later."
+      security:
+        - recaptcha: []
+
+components:
+  schemas:
+    ContactFormRequest:
+      type: object
+      required:
+        - name
+        - email
+        - company
+        - inquiryType
+        - message
+        - language
+        - recaptchaToken
+      properties:
+        name:
+          type: string
+          minLength: 2
+          maxLength: 100
+          description: Full name of the person submitting
+          pattern: '^[a-zA-Z\s\u3040-\u309F\u30A0-\u30FF\u4E00-\u9FAF]+$'
+          example: "Taro Yamada"
+        email:
+          type: string
+          format: email
+          maxLength: 255
+          description: Email address for contact
+          example: "taro.yamada@company.co.jp"
+        company:
+          type: string
+          minLength: 2
+          maxLength: 200
+          description: Company or organization name
+          example: "Tech Innovations Inc"
+        phone:
+          type: string
+          pattern: '^\+?[1-9]\d{1,14}$'
+          description: Optional phone number in E.164 format
+          example: "+81-90-1234-5678"
+          nullable: true
+        inquiryType:
+          type: string
+          enum:
+            - product
+            - partnership
+            - general
+          description: Type of inquiry
+          example: "product"
+        message:
+          type: string
+          minLength: 10
+          maxLength: 5000
+          description: Message content
+          example: "I'm interested in the H100 8-GPU server configuration for our AI research lab."
+        language:
+          type: string
+          enum:
+            - en
+            - ja
+          description: Language of the submission
+          example: "en"
+        recaptchaToken:
+          type: string
+          description: reCAPTCHA v3 token from client
+          example: "03AGdBq25..."
+        website:
+          type: string
+          description: Honeypot field (should be empty for legitimate submissions)
+          maxLength: 0
+          example: ""
+
+    ContactFormSuccessResponse:
+      type: object
+      required:
+        - success
+        - message
+      properties:
+        success:
+          type: boolean
+          example: true
+        message:
+          type: string
+          description: Success message to display to user
+          example: "Thank you for contacting us. We'll respond within 24 hours."
+
+    ErrorResponse:
+      type: object
+      required:
+        - success
+        - error
+      properties:
+        success:
+          type: boolean
+          example: false
+        error:
+          type: string
+          description: Error message
+          example: "Validation failed"
+        details:
+          type: array
+          description: Detailed validation errors (if applicable)
+          items:
+            type: object
+            properties:
+              field:
+                type: string
+                example: "email"
+              message:
+                type: string
+                example: "Invalid email address"
+
+  securitySchemes:
+    recaptcha:
+      type: apiKey
+      in: header
+      name: X-Recaptcha-Token
+      description: reCAPTCHA v3 token for bot prevention
+
+tags:
+  - name: Contact
+    description: Contact form submission endpoints
+

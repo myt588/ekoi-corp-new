@@ -1,116 +1,291 @@
-# Feature Specification: [FEATURE NAME]
+# Feature Specification: [FEATURE_NAME]
 
-**Feature Branch**: `[###-feature-name]`  
-**Created**: [DATE]  
-**Status**: Draft  
-**Input**: User description: "$ARGUMENTS"
+**Version:** 1.0.0  
+**Date:** [YYYY-MM-DD]  
+**Status:** [Draft | Review | Approved | Implemented]  
+**Owner:** [OWNER_NAME]
 
-## User Scenarios & Testing *(mandatory)*
+## Executive Summary
 
-<!--
-  IMPORTANT: User stories should be PRIORITIZED as user journeys ordered by importance.
-  Each user story/journey must be INDEPENDENTLY TESTABLE - meaning if you implement just ONE of them,
-  you should still have a viable MVP (Minimum Viable Product) that delivers value.
-  
-  Assign priorities (P1, P2, P3, etc.) to each story, where P1 is the most critical.
-  Think of each story as a standalone slice of functionality that can be:
-  - Developed independently
-  - Tested independently
-  - Deployed independently
-  - Demonstrated to users independently
--->
+[2-3 sentence overview of the feature, its purpose, and expected impact]
 
-### User Story 1 - [Brief Title] (Priority: P1)
+## Problem Statement
 
-[Describe this user journey in plain language]
+### Current State
+[Describe the current situation or pain point]
 
-**Why this priority**: [Explain the value and why it has this priority level]
+### Desired State
+[Describe what success looks like after implementation]
 
-**Independent Test**: [Describe how this can be tested independently - e.g., "Can be fully tested by [specific action] and delivers [specific value]"]
+### Success Criteria
+1. [Measurable success criterion 1]
+2. [Measurable success criterion 2]
+3. [Measurable success criterion 3]
 
-**Acceptance Scenarios**:
+## User Stories
 
-1. **Given** [initial state], **When** [action], **Then** [expected outcome]
-2. **Given** [initial state], **When** [action], **Then** [expected outcome]
+### Primary User Stories
+1. **As a** [user type], **I want to** [action], **so that** [benefit]
+   - **Acceptance Criteria:**
+     - [ ] [Specific testable criterion]
+     - [ ] [Specific testable criterion]
 
----
-
-### User Story 2 - [Brief Title] (Priority: P2)
-
-[Describe this user journey in plain language]
-
-**Why this priority**: [Explain the value and why it has this priority level]
-
-**Independent Test**: [Describe how this can be tested independently]
-
-**Acceptance Scenarios**:
-
-1. **Given** [initial state], **When** [action], **Then** [expected outcome]
-
----
-
-### User Story 3 - [Brief Title] (Priority: P3)
-
-[Describe this user journey in plain language]
-
-**Why this priority**: [Explain the value and why it has this priority level]
-
-**Independent Test**: [Describe how this can be tested independently]
-
-**Acceptance Scenarios**:
-
-1. **Given** [initial state], **When** [action], **Then** [expected outcome]
-
----
-
-[Add more user stories as needed, each with an assigned priority]
+2. **As a** [user type], **I want to** [action], **so that** [benefit]
+   - **Acceptance Criteria:**
+     - [ ] [Specific testable criterion]
+     - [ ] [Specific testable criterion]
 
 ### Edge Cases
+- [Edge case 1 and expected behavior]
+- [Edge case 2 and expected behavior]
 
-<!--
-  ACTION REQUIRED: The content in this section represents placeholders.
-  Fill them out with the right edge cases.
--->
+## Functional Requirements
 
-- What happens when [boundary condition]?
-- How does system handle [error scenario]?
+### Core Functionality
+1. **[Requirement Category]**
+   - MUST: [Mandatory requirement]
+   - MUST: [Mandatory requirement]
+   - SHOULD: [Recommended but optional]
 
-## Requirements *(mandatory)*
+2. **[Requirement Category]**
+   - MUST: [Mandatory requirement]
+   - MUST: [Mandatory requirement]
 
-<!--
-  ACTION REQUIRED: The content in this section represents placeholders.
-  Fill them out with the right functional requirements.
--->
+### User Interface Requirements
 
-### Functional Requirements
+#### Layout & Structure (Constitutional Principles 3, 4, 5)
+- MUST use design system components from [Design System Name]
+- MUST be fully responsive (320px to 2560px+)
+- MUST follow established navigation patterns
+- MUST maintain visual hierarchy for scannability
 
-- **FR-001**: System MUST [specific capability, e.g., "allow users to create accounts"]
-- **FR-002**: System MUST [specific capability, e.g., "validate email addresses"]  
-- **FR-003**: Users MUST be able to [key interaction, e.g., "reset their password"]
-- **FR-004**: System MUST [data requirement, e.g., "persist user preferences"]
-- **FR-005**: System MUST [behavior, e.g., "log all security events"]
+#### Interaction Patterns (Constitutional Principle 2)
+- MUST use standard form validation patterns
+- MUST provide loading states for async operations
+- MUST show success/error feedback consistently
+- MUST support keyboard navigation
 
-*Example of marking unclear requirements:*
+#### Content & Messaging (Constitutional Principle 5)
+- MUST use clear, action-oriented button labels
+- MUST provide helpful error messages with resolution steps
+- MUST include empty state guidance
+- MUST maintain consistent terminology
 
-- **FR-006**: System MUST authenticate users via [NEEDS CLARIFICATION: auth method not specified - email/password, SSO, OAuth?]
-- **FR-007**: System MUST retain user data for [NEEDS CLARIFICATION: retention period not specified]
+### Performance Requirements (Constitutional Principle 7)
 
-### Key Entities *(include if feature involves data)*
+- **Page Load:**
+  - MUST achieve Lighthouse Performance ≥90
+  - MUST achieve LCP ≤2.5s
+  - MUST achieve FCP ≤1.8s
+  - MUST achieve TTI ≤3.8s
 
-- **[Entity 1]**: [What it represents, key attributes without implementation]
-- **[Entity 2]**: [What it represents, relationships to other entities]
+- **Runtime Performance:**
+  - MUST respond to user interactions within 100ms
+  - MUST maintain 60fps during animations
+  - MUST keep bundle size increase under [X KB]
 
-## Success Criteria *(mandatory)*
+- **API Performance:**
+  - MUST complete API calls in <500ms (p95)
+  - MUST implement caching where appropriate
+  - MUST handle rate limiting gracefully
 
-<!--
-  ACTION REQUIRED: Define measurable success criteria.
-  These must be technology-agnostic and measurable.
--->
+### SEO Requirements (Constitutional Principle 6)
 
-### Measurable Outcomes
+For public-facing pages:
+- MUST include unique title tag (50-60 characters)
+- MUST include compelling meta description (150-160 characters)
+- MUST use semantic HTML (proper heading hierarchy)
+- MUST include descriptive alt text for all images
+- MUST have human-readable, keyword-relevant URLs
+- MUST implement structured data if applicable
+- MUST pass Mobile-Friendly Test
+- MUST meet Core Web Vitals "Good" thresholds
 
-- **SC-001**: [Measurable metric, e.g., "Users can complete account creation in under 2 minutes"]
-- **SC-002**: [Measurable metric, e.g., "System handles 1000 concurrent users without degradation"]
-- **SC-003**: [User satisfaction metric, e.g., "90% of users successfully complete primary task on first attempt"]
-- **SC-004**: [Business metric, e.g., "Reduce support tickets related to [X] by 50%"]
+### Accessibility Requirements
 
+- MUST meet WCAG 2.1 Level AA standards
+- MUST support keyboard navigation completely
+- MUST provide appropriate ARIA labels
+- MUST maintain color contrast ratios ≥4.5:1
+- MUST support screen readers
+
+### Code Quality Requirements (Constitutional Principle 1)
+
+- MUST pass all linting rules without warnings
+- MUST include unit tests with ≥80% coverage
+- MUST include integration tests for critical paths
+- MUST follow established coding conventions
+- MUST include inline documentation for complex logic
+- MUST undergo code review before merging
+
+## Non-Functional Requirements
+
+### Security
+- [Authentication requirements]
+- [Authorization and permissions]
+- [Data encryption needs]
+- [Input validation and sanitization]
+
+### Scalability
+- [Expected load and growth projections]
+- [Scaling considerations]
+
+### Reliability
+- [Uptime requirements]
+- [Error handling and recovery]
+- [Data backup and disaster recovery]
+
+### Maintainability
+- [Documentation requirements]
+- [Monitoring and logging]
+- [Technical debt considerations]
+
+## Technical Constraints
+
+- [Technology stack requirements]
+- [Browser/device support requirements]
+- [Third-party service dependencies]
+- [Infrastructure limitations]
+
+## Design Specifications
+
+### Wireframes
+[Link to Figma/design files or embed images]
+
+### Visual Design
+[Link to high-fidelity mockups]
+
+### Design System Components Used
+- [Component 1: Usage context]
+- [Component 2: Usage context]
+
+### Responsive Breakpoints
+| Breakpoint | Width | Layout Changes |
+|------------|-------|----------------|
+| Mobile | 320-767px | [Description] |
+| Tablet | 768-1023px | [Description] |
+| Desktop | 1024-1439px | [Description] |
+| Wide | 1440px+ | [Description] |
+
+## Data Requirements
+
+### Data Model
+[Describe data structures, schemas, or models]
+
+### Data Sources
+- [Source 1: Description]
+- [Source 2: Description]
+
+### Data Validation
+- [Validation rule 1]
+- [Validation rule 2]
+
+### Data Privacy
+- [PII handling requirements]
+- [Compliance requirements (GDPR, CCPA, etc.)]
+
+## API Specifications
+
+### Endpoints
+
+#### `[HTTP METHOD] /api/endpoint/path`
+**Description:** [What this endpoint does]
+
+**Request:**
+```json
+{
+  "field": "type and description"
+}
+```
+
+**Response (200):**
+```json
+{
+  "field": "type and description"
+}
+```
+
+**Error Responses:**
+- `400 Bad Request`: [When and why]
+- `401 Unauthorized`: [When and why]
+- `404 Not Found`: [When and why]
+- `500 Internal Server Error`: [When and why]
+
+## Dependencies
+
+### Internal Dependencies
+- [Other features or components this depends on]
+
+### External Dependencies
+- [Third-party libraries or services]
+- [API integrations]
+
+### Blocking Issues
+- [Issues that must be resolved before implementation]
+
+## Timeline
+
+| Phase | Duration | Deliverables |
+|-------|----------|--------------|
+| Design | [X weeks] | [Deliverables] |
+| Development | [X weeks] | [Deliverables] |
+| Testing | [X weeks] | [Deliverables] |
+| Deployment | [X weeks] | [Deliverables] |
+
+**Target Launch Date:** [YYYY-MM-DD]
+
+## Risks & Open Questions
+
+### Risks
+1. **[Risk description]**
+   - Likelihood: [High/Med/Low]
+   - Impact: [High/Med/Low]
+   - Mitigation: [Strategy]
+
+### Open Questions
+1. [Question needing resolution]
+2. [Question needing resolution]
+
+## Monitoring & Success Metrics
+
+### Key Performance Indicators (KPIs)
+- [KPI 1]: Baseline [X], Target [Y]
+- [KPI 2]: Baseline [X], Target [Y]
+
+### Monitoring Strategy
+- [Metrics to track]
+- [Alerts to configure]
+- [Dashboards to create]
+
+### Success Evaluation
+- [How and when success will be measured]
+- [Criteria for considering feature complete]
+
+## Future Considerations
+
+[Features or enhancements intentionally deferred to future iterations]
+
+## References
+
+- [Links to related documents]
+- [Research or competitive analysis]
+- [Design system documentation]
+- [Constitutional principles referenced]
+
+---
+
+## Change Log
+
+| Version | Date | Author | Changes |
+|---------|------|--------|---------|
+| 1.0.0 | [Date] | [Author] | Initial specification |
+
+---
+
+## Approvals
+
+- [ ] Product Owner
+- [ ] Technical Lead
+- [ ] Design Lead
+- [ ] Security Review (if applicable)
+- [ ] Legal Review (if applicable)

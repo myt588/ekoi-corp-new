@@ -1,251 +1,426 @@
----
-description: "Task list template for feature implementation"
----
+# Task Breakdown: [FEATURE_NAME]
 
-# Tasks: [FEATURE NAME]
+**Epic/Feature:** [Link to parent epic or feature spec]  
+**Sprint/Milestone:** [Sprint number or milestone name]  
+**Date Created:** [YYYY-MM-DD]  
+**Last Updated:** [YYYY-MM-DD]
 
-**Input**: Design documents from `/specs/[###-feature-name]/`
-**Prerequisites**: plan.md (required), spec.md (required for user stories), research.md, data-model.md, contracts/
+## Task Organization
 
-**Tests**: The examples below include test tasks. Tests are OPTIONAL - only include them if explicitly requested in the feature specification.
-
-**Organization**: Tasks are grouped by user story to enable independent implementation and testing of each story.
-
-## Format: `[ID] [P?] [Story] Description`
-- **[P]**: Can run in parallel (different files, no dependencies)
-- **[Story]**: Which user story this task belongs to (e.g., US1, US2, US3)
-- Include exact file paths in descriptions
-
-## Path Conventions
-- **Single project**: `src/`, `tests/` at repository root
-- **Web app**: `backend/src/`, `frontend/src/`
-- **Mobile**: `api/src/`, `ios/src/` or `android/src/`
-- Paths shown below assume single project - adjust based on plan.md structure
-
-<!-- 
-  ============================================================================
-  IMPORTANT: The tasks below are SAMPLE TASKS for illustration purposes only.
-  
-  The /speckit.tasks command MUST replace these with actual tasks based on:
-  - User stories from spec.md (with their priorities P1, P2, P3...)
-  - Feature requirements from plan.md
-  - Entities from data-model.md
-  - Endpoints from contracts/
-  
-  Tasks MUST be organized by user story so each story can be:
-  - Implemented independently
-  - Tested independently
-  - Delivered as an MVP increment
-  
-  DO NOT keep these sample tasks in the generated tasks.md file.
-  ============================================================================
--->
-
-## Phase 1: Setup (Shared Infrastructure)
-
-**Purpose**: Project initialization and basic structure
-
-- [ ] T001 Create project structure per implementation plan
-- [ ] T002 Initialize [language] project with [framework] dependencies
-- [ ] T003 [P] Configure linting and formatting tools
+Tasks are categorized by constitutional principle alignment to ensure comprehensive coverage of project standards.
 
 ---
 
-## Phase 2: Foundational (Blocking Prerequisites)
+## 1. Code Quality Tasks (Principle 1)
 
-**Purpose**: Core infrastructure that MUST be complete before ANY user story can be implemented
+### Setup & Configuration
+- [ ] **[TASK-001]** Set up project structure and module organization
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** None
+  - **Notes:** Follow established project conventions
 
-**⚠️ CRITICAL**: No user story work can begin until this phase is complete
+- [ ] **[TASK-002]** Configure linting and static analysis rules
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** TASK-001
 
-Examples of foundational tasks (adjust based on your project):
+### Core Implementation
+- [ ] **[TASK-010]** Implement [Component/Module Name]
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** [TASK-IDs]
+  - **Acceptance Criteria:**
+    - Passes all linting rules
+    - Clear single responsibilities
+    - Self-documenting code with meaningful names
+    - Complex logic documented
 
-- [ ] T004 Setup database schema and migrations framework
-- [ ] T005 [P] Implement authentication/authorization framework
-- [ ] T006 [P] Setup API routing and middleware structure
-- [ ] T007 Create base models/entities that all stories depend on
-- [ ] T008 Configure error handling and logging infrastructure
-- [ ] T009 Setup environment configuration management
-
-**Checkpoint**: Foundation ready - user story implementation can now begin in parallel
-
----
-
-## Phase 3: User Story 1 - [Title] (Priority: P1) 🎯 MVP
-
-**Goal**: [Brief description of what this story delivers]
-
-**Independent Test**: [How to verify this story works on its own]
-
-### Tests for User Story 1 (OPTIONAL - only if tests requested) ⚠️
-
-**NOTE: Write these tests FIRST, ensure they FAIL before implementation**
-
-- [ ] T010 [P] [US1] Contract test for [endpoint] in tests/contract/test_[name].py
-- [ ] T011 [P] [US1] Integration test for [user journey] in tests/integration/test_[name].py
-
-### Implementation for User Story 1
-
-- [ ] T012 [P] [US1] Create [Entity1] model in src/models/[entity1].py
-- [ ] T013 [P] [US1] Create [Entity2] model in src/models/[entity2].py
-- [ ] T014 [US1] Implement [Service] in src/services/[service].py (depends on T012, T013)
-- [ ] T015 [US1] Implement [endpoint/feature] in src/[location]/[file].py
-- [ ] T016 [US1] Add validation and error handling
-- [ ] T017 [US1] Add logging for user story 1 operations
-
-**Checkpoint**: At this point, User Story 1 should be fully functional and testable independently
+### Code Review & Refinement
+- [ ] **[TASK-020]** Code review and refactoring
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** Implementation tasks complete
 
 ---
 
-## Phase 4: User Story 2 - [Title] (Priority: P2)
+## 2. User Experience Tasks (Principle 2)
 
-**Goal**: [Brief description of what this story delivers]
+### Workflow Design
+- [ ] **[TASK-100]** Map user workflows and interaction patterns
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** Feature spec approved
+  - **Deliverable:** Workflow diagrams
 
-**Independent Test**: [How to verify this story works on its own]
+### Form & Interaction Implementation
+- [ ] **[TASK-110]** Implement form validation with consistent patterns
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** [TASK-IDs]
+  - **Requirements:**
+    - Consistent error handling
+    - Standard success/error messaging
+    - Loading state management
 
-### Tests for User Story 2 (OPTIONAL - only if tests requested) ⚠️
+- [ ] **[TASK-111]** Implement navigation consistency
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** [TASK-IDs]
 
-- [ ] T018 [P] [US2] Contract test for [endpoint] in tests/contract/test_[name].py
-- [ ] T019 [P] [US2] Integration test for [user journey] in tests/integration/test_[name].py
-
-### Implementation for User Story 2
-
-- [ ] T020 [P] [US2] Create [Entity] model in src/models/[entity].py
-- [ ] T021 [US2] Implement [Service] in src/services/[service].py
-- [ ] T022 [US2] Implement [endpoint/feature] in src/[location]/[file].py
-- [ ] T023 [US2] Integrate with User Story 1 components (if needed)
-
-**Checkpoint**: At this point, User Stories 1 AND 2 should both work independently
-
----
-
-## Phase 5: User Story 3 - [Title] (Priority: P3)
-
-**Goal**: [Brief description of what this story delivers]
-
-**Independent Test**: [How to verify this story works on its own]
-
-### Tests for User Story 3 (OPTIONAL - only if tests requested) ⚠️
-
-- [ ] T024 [P] [US3] Contract test for [endpoint] in tests/contract/test_[name].py
-- [ ] T025 [P] [US3] Integration test for [user journey] in tests/integration/test_[name].py
-
-### Implementation for User Story 3
-
-- [ ] T026 [P] [US3] Create [Entity] model in src/models/[entity].py
-- [ ] T027 [US3] Implement [Service] in src/services/[service].py
-- [ ] T028 [US3] Implement [endpoint/feature] in src/[location]/[file].py
-
-**Checkpoint**: All user stories should now be independently functional
+### Feedback Mechanisms
+- [ ] **[TASK-120]** Implement loading states and user feedback
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** [TASK-IDs]
 
 ---
 
-[Add more user story phases as needed, following the same pattern]
+## 3. UI Design Consistency Tasks (Principle 3)
+
+### Design System Audit
+- [ ] **[TASK-200]** Audit design for design system compliance
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** Design mockups complete
+  - **Checklist:**
+    - Colors match brand palette
+    - Typography follows hierarchy
+    - Spacing uses standard units
+    - Icons from approved library
+
+### Component Implementation
+- [ ] **[TASK-210]** Implement UI using design system components
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** TASK-200
+  - **Requirements:**
+    - No custom one-off components without justification
+    - Document any new component variants
+
+- [ ] **[TASK-211]** Implement animations and transitions
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** TASK-210
+  - **Requirements:** Follow defined timing and easing standards
 
 ---
 
-## Phase N: Polish & Cross-Cutting Concerns
+## 4. Responsive Design Tasks (Principle 4)
 
-**Purpose**: Improvements that affect multiple user stories
+### Mobile-First Implementation
+- [ ] **[TASK-300]** Implement mobile layout (320px-767px)
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** [TASK-IDs]
+  - **Requirements:**
+    - Touch targets ≥44×44px
+    - No horizontal scrolling
+    - Readable typography
 
-- [ ] TXXX [P] Documentation updates in docs/
-- [ ] TXXX Code cleanup and refactoring
-- [ ] TXXX Performance optimization across all stories
-- [ ] TXXX [P] Additional unit tests (if requested) in tests/unit/
-- [ ] TXXX Security hardening
-- [ ] TXXX Run quickstart.md validation
+### Responsive Breakpoints
+- [ ] **[TASK-310]** Implement tablet layout (768px-1023px)
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** TASK-300
 
----
+- [ ] **[TASK-311]** Implement desktop layout (1024px-1439px)
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** TASK-310
 
-## Dependencies & Execution Order
+- [ ] **[TASK-312]** Implement wide-screen layout (1440px+)
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** TASK-311
 
-### Phase Dependencies
-
-- **Setup (Phase 1)**: No dependencies - can start immediately
-- **Foundational (Phase 2)**: Depends on Setup completion - BLOCKS all user stories
-- **User Stories (Phase 3+)**: All depend on Foundational phase completion
-  - User stories can then proceed in parallel (if staffed)
-  - Or sequentially in priority order (P1 → P2 → P3)
-- **Polish (Final Phase)**: Depends on all desired user stories being complete
-
-### User Story Dependencies
-
-- **User Story 1 (P1)**: Can start after Foundational (Phase 2) - No dependencies on other stories
-- **User Story 2 (P2)**: Can start after Foundational (Phase 2) - May integrate with US1 but should be independently testable
-- **User Story 3 (P3)**: Can start after Foundational (Phase 2) - May integrate with US1/US2 but should be independently testable
-
-### Within Each User Story
-
-- Tests (if included) MUST be written and FAIL before implementation
-- Models before services
-- Services before endpoints
-- Core implementation before integration
-- Story complete before moving to next priority
-
-### Parallel Opportunities
-
-- All Setup tasks marked [P] can run in parallel
-- All Foundational tasks marked [P] can run in parallel (within Phase 2)
-- Once Foundational phase completes, all user stories can start in parallel (if team capacity allows)
-- All tests for a user story marked [P] can run in parallel
-- Models within a story marked [P] can run in parallel
-- Different user stories can be worked on in parallel by different team members
+### Device Testing
+- [ ] **[TASK-320]** Test on real devices across platforms
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** All layout tasks complete
+  - **Devices:** [List target devices]
 
 ---
 
-## Parallel Example: User Story 1
+## 5. Clear Interface Tasks (Principle 5)
 
-```bash
-# Launch all tests for User Story 1 together (if tests requested):
-Task: "Contract test for [endpoint] in tests/contract/test_[name].py"
-Task: "Integration test for [user journey] in tests/integration/test_[name].py"
+### Content & Microcopy
+- [ ] **[TASK-400]** Write clear, actionable microcopy
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** Design mockups
+  - **Requirements:**
+    - Jargon-free language
+    - Action-oriented labels
+    - Helpful error messages
 
-# Launch all models for User Story 1 together:
-Task: "Create [Entity1] model in src/models/[entity1].py"
-Task: "Create [Entity2] model in src/models/[entity2].py"
-```
+### Information Architecture
+- [ ] **[TASK-410]** Implement visual hierarchy and content structure
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** [TASK-IDs]
+  - **Requirements:**
+    - Logical navigation
+    - Progressive disclosure for complexity
+    - Empty states with guidance
 
----
-
-## Implementation Strategy
-
-### MVP First (User Story 1 Only)
-
-1. Complete Phase 1: Setup
-2. Complete Phase 2: Foundational (CRITICAL - blocks all stories)
-3. Complete Phase 3: User Story 1
-4. **STOP and VALIDATE**: Test User Story 1 independently
-5. Deploy/demo if ready
-
-### Incremental Delivery
-
-1. Complete Setup + Foundational → Foundation ready
-2. Add User Story 1 → Test independently → Deploy/Demo (MVP!)
-3. Add User Story 2 → Test independently → Deploy/Demo
-4. Add User Story 3 → Test independently → Deploy/Demo
-5. Each story adds value without breaking previous stories
-
-### Parallel Team Strategy
-
-With multiple developers:
-
-1. Team completes Setup + Foundational together
-2. Once Foundational is done:
-   - Developer A: User Story 1
-   - Developer B: User Story 2
-   - Developer C: User Story 3
-3. Stories complete and integrate independently
+### Help & Documentation
+- [ ] **[TASK-420]** Add tooltips and contextual help
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** TASK-410
 
 ---
 
-## Notes
+## 6. SEO Optimization Tasks (Principle 6)
 
-- [P] tasks = different files, no dependencies
-- [Story] label maps task to specific user story for traceability
-- Each user story should be independently completable and testable
-- Verify tests fail before implementing
-- Commit after each task or logical group
-- Stop at any checkpoint to validate story independently
-- Avoid: vague tasks, same file conflicts, cross-story dependencies that break independence
+### Meta Data Implementation
+- [ ] **[TASK-500]** Implement unique page titles and meta descriptions
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** Content finalized
+  - **Requirements:**
+    - Titles: 50-60 characters
+    - Descriptions: 150-160 characters
 
+### Semantic HTML
+- [ ] **[TASK-510]** Implement proper semantic HTML structure
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** [TASK-IDs]
+  - **Requirements:**
+    - Correct heading hierarchy (h1, h2, h3...)
+    - Proper use of landmarks
+    - Lists and other semantic elements
 
+### Structured Data
+- [ ] **[TASK-520]** Implement Schema.org structured data
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** TASK-510
+  - **Types:** [Specify schema types needed]
 
+### Image Optimization
+- [ ] **[TASK-530]** Add descriptive alt text to all images
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** Images finalized
+
+### SEO Technical Implementation
+- [ ] **[TASK-540]** Implement SEO-friendly URLs
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** [TASK-IDs]
+
+- [ ] **[TASK-541]** Set canonical URLs
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** TASK-540
+
+- [ ] **[TASK-542]** Update XML sitemap
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** All pages implemented
+
+### SEO Validation
+- [ ] **[TASK-550]** Validate Mobile-Friendly Test passing
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** Responsive implementation complete
+
+- [ ] **[TASK-551]** Validate Core Web Vitals meeting thresholds
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** Performance optimization complete
+
+---
+
+## 7. Performance Tasks (Principle 7)
+
+### Performance Baseline
+- [ ] **[TASK-600]** Establish performance baseline metrics
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** Initial implementation
+  - **Metrics:** Lighthouse score, Core Web Vitals
+
+### Asset Optimization
+- [ ] **[TASK-610]** Optimize and compress images
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** [TASK-IDs]
+  - **Requirements:**
+    - WebP/AVIF formats
+    - Appropriate dimensions
+    - Lazy loading implemented
+
+- [ ] **[TASK-611]** Implement code splitting and lazy loading
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** [TASK-IDs]
+
+- [ ] **[TASK-612]** Optimize bundle size
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** [TASK-IDs]
+  - **Target:** Bundle increase <[X KB]
+
+### Runtime Performance
+- [ ] **[TASK-620]** Optimize rendering performance
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** [TASK-IDs]
+  - **Target:** Maintain 60fps
+
+- [ ] **[TASK-621]** Optimize API calls and caching
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** [TASK-IDs]
+  - **Target:** API p95 <500ms
+
+### Database Performance
+- [ ] **[TASK-630]** Optimize database queries
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** [TASK-IDs]
+  - **Requirements:**
+    - No N+1 queries
+    - Appropriate indexing
+    - Query monitoring
+
+### Performance Validation
+- [ ] **[TASK-640]** Run Lighthouse audit and achieve ≥90 score
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** All performance tasks complete
+
+- [ ] **[TASK-641]** Validate Core Web Vitals thresholds
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** TASK-640
+  - **Thresholds:**
+    - LCP ≤2.5s
+    - FCP ≤1.8s
+    - TTI ≤3.8s
+    - CLS ≤0.1
+
+- [ ] **[TASK-642]** Set up performance monitoring in CI/CD
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** TASK-641
+
+---
+
+## 8. Testing & Quality Assurance
+
+### Unit Testing
+- [ ] **[TASK-700]** Write unit tests (≥80% coverage)
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** Implementation complete
+
+### Integration Testing
+- [ ] **[TASK-710]** Write integration tests for critical paths
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** [TASK-IDs]
+
+### End-to-End Testing
+- [ ] **[TASK-720]** Write E2E tests for user workflows
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** Feature implementation complete
+
+### Accessibility Testing
+- [ ] **[TASK-730]** Perform WCAG 2.1 AA compliance testing
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** UI implementation complete
+  - **Tools:** axe DevTools, WAVE, screen reader testing
+
+### Cross-browser Testing
+- [ ] **[TASK-740]** Test across target browsers
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** [TASK-IDs]
+  - **Browsers:** Chrome, Firefox, Safari, Edge
+
+---
+
+## 9. Documentation
+
+- [ ] **[TASK-800]** Update API documentation
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** API implementation complete
+
+- [ ] **[TASK-810]** Update component documentation in design system
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** Component implementation complete
+
+- [ ] **[TASK-820]** Write user-facing help documentation
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** Feature complete
+
+- [ ] **[TASK-830]** Update README and changelog
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** Feature complete
+
+---
+
+## 10. Deployment & Monitoring
+
+- [ ] **[TASK-900]** Set up feature flags (if applicable)
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** [TASK-IDs]
+
+- [ ] **[TASK-910]** Configure monitoring and alerts
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** [TASK-IDs]
+
+- [ ] **[TASK-920]** Deploy to staging environment
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** All implementation and testing complete
+
+- [ ] **[TASK-930]** Perform staging validation
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** TASK-920
+
+- [ ] **[TASK-940]** Deploy to production
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** TASK-930, stakeholder approval
+
+- [ ] **[TASK-950]** Post-deployment monitoring and validation
+  - **Estimate:** [X hours]
+  - **Owner:** [Name]
+  - **Dependencies:** TASK-940
+
+---
+
+## Task Summary
+
+**Total Estimated Hours:** [Sum of all estimates]  
+**Critical Path:** [Identify task sequence that determines minimum timeline]  
+**Blockers:** [List any known blockers]
+
+---
+
+## Progress Tracking
+
+| Status | Count | Percentage |
+|--------|-------|------------|
+| Not Started | [X] | [X]% |
+| In Progress | [X] | [X]% |
+| Completed | [X] | [X]% |
+| **Total** | **[X]** | **100%** |
+
+**Last Updated:** [YYYY-MM-DD]

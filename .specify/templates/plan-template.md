@@ -1,105 +1,153 @@
-# Implementation Plan: [FEATURE]
+# Implementation Plan: [FEATURE_NAME]
 
-**Branch**: `[###-feature-name]` | **Date**: [DATE] | **Spec**: [link]
-**Input**: Feature specification from `/specs/[###-feature-name]/spec.md`
+**Date:** [YYYY-MM-DD]  
+**Author:** [AUTHOR_NAME]  
+**Status:** [Draft | Approved | In Progress | Completed]
 
-**Note**: This template is filled in by the `/speckit.plan` command. See `.specify/templates/commands/plan.md` for the execution workflow.
+## Overview
 
-## Summary
+[Brief description of what will be implemented and why]
 
-[Extract from feature spec: primary requirement + technical approach from research]
+## Constitutional Alignment
 
-## Technical Context
+This implementation adheres to the following constitutional principles:
 
-<!--
-  ACTION REQUIRED: Replace the content in this section with the technical details
-  for the project. The structure here is presented in advisory capacity to guide
-  the iteration process.
--->
+### Code Quality Excellence (Principle 1)
+- [ ] Code follows style guides and conventions
+- [ ] Clear single responsibilities
+- [ ] Meaningful naming and documentation
+- [ ] Linting and static analysis passing
 
-**Language/Version**: [e.g., Python 3.11, Swift 5.9, Rust 1.75 or NEEDS CLARIFICATION]  
-**Primary Dependencies**: [e.g., FastAPI, UIKit, LLVM or NEEDS CLARIFICATION]  
-**Storage**: [if applicable, e.g., PostgreSQL, CoreData, files or N/A]  
-**Testing**: [e.g., pytest, XCTest, cargo test or NEEDS CLARIFICATION]  
-**Target Platform**: [e.g., Linux server, iOS 15+, WASM or NEEDS CLARIFICATION]
-**Project Type**: [single/web/mobile - determines source structure]  
-**Performance Goals**: [domain-specific, e.g., 1000 req/s, 10k lines/sec, 60 fps or NEEDS CLARIFICATION]  
-**Constraints**: [domain-specific, e.g., <200ms p95, <100MB memory, offline-capable or NEEDS CLARIFICATION]  
-**Scale/Scope**: [domain-specific, e.g., 10k users, 1M LOC, 50 screens or NEEDS CLARIFICATION]
+### User Experience Consistency (Principle 2)
+- [ ] Workflows follow existing patterns
+- [ ] Consistent form and navigation behavior
+- [ ] Standardized feedback mechanisms
 
-## Constitution Check
+### UI Design Consistency (Principle 3)
+- [ ] Design system components used exclusively
+- [ ] Brand color palette adherence
+- [ ] Typography and spacing standards followed
 
-*GATE: Must pass before Phase 0 research. Re-check after Phase 1 design.*
+### Responsive Design (Principle 4)
+- [ ] Mobile-first approach (320px minimum)
+- [ ] Touch targets minimum 44×44px
+- [ ] Tested across device sizes
 
-[Gates determined based on constitution file]
+### Clear & Intuitive Interface (Principle 5)
+- [ ] Primary actions clearly labeled
+- [ ] Error messages are actionable
+- [ ] Progressive disclosure for complexity
 
-## Project Structure
+### SEO Optimization (Principle 6)
+- [ ] Unique page titles and meta descriptions
+- [ ] Semantic HTML structure
+- [ ] Image alt text provided
+- [ ] Schema.org structured data where applicable
 
-### Documentation (this feature)
+### Performance Excellence (Principle 7)
+- [ ] Lighthouse Performance score ≥90
+- [ ] Core Web Vitals thresholds met
+- [ ] Optimized assets and lazy loading
+- [ ] API responses <500ms (p95)
 
-```
-specs/[###-feature]/
-├── plan.md              # This file (/speckit.plan command output)
-├── research.md          # Phase 0 output (/speckit.plan command)
-├── data-model.md        # Phase 1 output (/speckit.plan command)
-├── quickstart.md        # Phase 1 output (/speckit.plan command)
-├── contracts/           # Phase 1 output (/speckit.plan command)
-└── tasks.md             # Phase 2 output (/speckit.tasks command - NOT created by /speckit.plan)
-```
+## Scope
 
-### Source Code (repository root)
-<!--
-  ACTION REQUIRED: Replace the placeholder tree below with the concrete layout
-  for this feature. Delete unused options and expand the chosen structure with
-  real paths (e.g., apps/admin, packages/something). The delivered plan must
-  not include Option labels.
--->
+### In Scope
+- [Feature/component 1]
+- [Feature/component 2]
+- [Feature/component 3]
 
-```
-# [REMOVE IF UNUSED] Option 1: Single project (DEFAULT)
-src/
-├── models/
-├── services/
-├── cli/
-└── lib/
+### Out of Scope
+- [Explicitly excluded items]
 
-tests/
-├── contract/
-├── integration/
-└── unit/
+## Technical Approach
 
-# [REMOVE IF UNUSED] Option 2: Web application (when "frontend" + "backend" detected)
-backend/
-├── src/
-│   ├── models/
-│   ├── services/
-│   └── api/
-└── tests/
+### Architecture
+[High-level architectural decisions]
 
-frontend/
-├── src/
-│   ├── components/
-│   ├── pages/
-│   └── services/
-└── tests/
+### Key Components
+1. **[Component Name]:** [Description and responsibility]
+2. **[Component Name]:** [Description and responsibility]
 
-# [REMOVE IF UNUSED] Option 3: Mobile + API (when "iOS/Android" detected)
-api/
-└── [same as backend above]
+### Data Model Changes
+[Any database schema changes, migrations, or data structure updates]
 
-ios/ or android/
-└── [platform-specific structure: feature modules, UI flows, platform tests]
-```
+### API Changes
+[New endpoints, modified endpoints, breaking changes]
 
-**Structure Decision**: [Document the selected structure and reference the real
-directories captured above]
+## Implementation Phases
 
-## Complexity Tracking
+### Phase 1: [Phase Name]
+**Duration:** [Estimated time]  
+**Tasks:**
+- [ ] Task 1
+- [ ] Task 2
 
-*Fill ONLY if Constitution Check has violations that must be justified*
+### Phase 2: [Phase Name]
+**Duration:** [Estimated time]  
+**Tasks:**
+- [ ] Task 1
+- [ ] Task 2
 
-| Violation | Why Needed | Simpler Alternative Rejected Because |
-|-----------|------------|-------------------------------------|
-| [e.g., 4th project] | [current need] | [why 3 projects insufficient] |
-| [e.g., Repository pattern] | [specific problem] | [why direct DB access insufficient] |
+## Testing Strategy
 
+- **Unit Tests:** [Coverage requirements and key test cases]
+- **Integration Tests:** [API and component integration tests]
+- **E2E Tests:** [Critical user flows to automate]
+- **Performance Tests:** [Load testing, Core Web Vitals validation]
+- **Accessibility Tests:** [WCAG compliance verification]
+- **Cross-browser/Device Testing:** [Target browsers and devices]
+
+## Performance Considerations
+
+- **Bundle Size Impact:** [Estimated increase and mitigation]
+- **Runtime Performance:** [Rendering and interaction optimization]
+- **Network Requests:** [API calls, caching strategy]
+- **Database Queries:** [Query optimization, indexing needs]
+
+## Security Considerations
+
+- [Authentication/authorization requirements]
+- [Data validation and sanitization]
+- [XSS, CSRF, injection prevention]
+- [Sensitive data handling]
+
+## Rollout Strategy
+
+- **Feature Flags:** [If applicable]
+- **A/B Testing:** [If applicable]
+- **Monitoring:** [Metrics and alerts to establish]
+- **Rollback Plan:** [How to revert if issues arise]
+
+## Dependencies
+
+- [External libraries or services]
+- [Team dependencies or blockers]
+- [Infrastructure requirements]
+
+## Risks & Mitigations
+
+| Risk | Impact | Likelihood | Mitigation |
+|------|--------|------------|------------|
+| [Risk description] | [High/Med/Low] | [High/Med/Low] | [Mitigation strategy] |
+
+## Documentation Requirements
+
+- [ ] API documentation updated
+- [ ] Component documentation in design system
+- [ ] User-facing help documentation
+- [ ] README updates
+- [ ] Changelog entry
+
+## Success Metrics
+
+- [Metric 1: Target value]
+- [Metric 2: Target value]
+- [Metric 3: Target value]
+
+---
+
+**Approval Signatures:**
+- Technical Lead: _______________
+- Product Owner: _______________
+- Date: _______________
