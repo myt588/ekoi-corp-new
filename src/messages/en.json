@@ -18,7 +18,14 @@
     "submit": "Submit",
     "cancel": "Cancel",
     "back": "Back",
-    "next": "Next"
+    "next": "Next",
+    "company": "Company"
+  },
+  "hero": {
+    "title": "AI Infrastructure Solutions",
+    "subtitle": "Enterprise-grade GPU servers powered by NVIDIA H100, H200, and A100 for AI training and inference workloads",
+    "cta": "Explore Products",
+    "secondary": "Contact Sales"
   }
 }
 
