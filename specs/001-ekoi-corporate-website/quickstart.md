@@ -1,18 +1,17 @@
 # EKOI Corporate Website - Developer Quickstart
 
-**Last Updated:** 2025-10-21
+**Last Updated:** 2025-10-24
 
 ## Prerequisites
 
 Before you begin, ensure you have:
 
-- **Node.js** 18.17 or later
-- **npm** or **yarn** or **pnpm**
+- **Node.js** 24 or later
+- **pnpm** 10 (package manager)
 - **Git** for version control
 - **VS Code** (recommended) with extensions:
   - ESLint
   - Prettier
-  - Tailwind CSS IntelliSense
   - TypeScript and JavaScript Language Features
 
 ## Project Setup
@@ -25,56 +24,33 @@ git clone https://github.com/ekoi/ekoi-corp-new.git
 cd ekoi-corp-new
 
 # Install dependencies
-npm install
-
-# or
-yarn install
-
-# or
 pnpm install
 ```
 
 ### 2. Environment Variables
 
-Create a `.env.local` file in the project root:
+Create a `.env.local` file in the project root (when you start implementing features that need them):
 
 ```bash
 # .env.local
 
-# reCAPTCHA v3 (get from https://www.google.com/recaptcha/admin)
-NEXT_PUBLIC_RECAPTCHA_SITE_KEY=your_recaptcha_site_key_here
-RECAPTCHA_SECRET_KEY=your_recaptcha_secret_key_here
+# Example environment variables (add as needed):
+# NEXT_PUBLIC_EXAMPLE=value
 
-# Slack Webhook (get from Slack App settings)
-SLACK_WEBHOOK_URL=https://hooks.slack.com/services/YOUR/WEBHOOK/URL
-
-# Optional: Analytics
-# NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
+# Note: Client-side env vars must start with NEXT_PUBLIC_
+# Server-side env vars should be defined in src/lib/env/server.ts
+# Client-side env vars should be defined in src/lib/env/client.ts
 ```
 
-**Getting reCAPTCHA Keys:**
-1. Go to https://www.google.com/recaptcha/admin
-2. Register a new site with reCAPTCHA v3
-3. Add your domains (localhost for development)
-4. Copy Site Key → `NEXT_PUBLIC_RECAPTCHA_SITE_KEY`
-5. Copy Secret Key → `RECAPTCHA_SECRET_KEY`
+The project uses **T3 Env** for type-safe environment variables. See:
+- `src/lib/env/server.ts` for server-side environment variables
+- `src/lib/env/client.ts` for client-side environment variables
 
-**Getting Slack Webhook URL:**
-1. Go to https://api.slack.com/apps
-2. Create a new app or use existing
-3. Enable "Incoming Webhooks"
-4. Add webhook to your desired channel
-5. Copy Webhook URL → `SLACK_WEBHOOK_URL`
+When you add environment variables, update the corresponding schema files.
 
 ### 3. Run Development Server
 
 ```bash
-npm run dev
-
-# or
-yarn dev
-
-# or
 pnpm dev
 ```
 
@@ -86,59 +62,70 @@ The page will auto-reload when you make changes. Errors and lint warnings will a
 
 ```
 ekoi-corp-new/
-├── src/
-│   ├── app/                         # Next.js App Router
-│   │   ├── [locale]/                # Internationalized routes
-│   │   │   ├── layout.tsx           # Root layout
-│   │   │   ├── page.tsx             # Homepage
-│   │   │   ├── products/            # Product pages
-│   │   │   ├── solutions/           # Solutions pages
-│   │   │   ├── news/                # News pages
-│   │   │   └── contact/             # Contact page
-│   │   ├── api/
-│   │   │   └── contact/route.ts     # Contact API
-│   │   └── globals.css              # Global styles
-│   ├── components/
-│   │   ├── ui/                      # shadcn/ui components
-│   │   ├── layout/                  # Header, Footer, Nav
-│   │   ├── sections/                # Page sections
-│   │   └── forms/                   # Form components
-│   ├── lib/
-│   │   ├── utils.ts                 # Utility functions
-│   │   ├── validations.ts           # Zod schemas
-│   │   ├── slack.ts                 # Slack integration
-│   │   └── recaptcha.ts             # reCAPTCHA helper
-│   ├── data/                        # Content data files
-│   │   ├── products.ts
-│   │   ├── solutions.ts
-│   │   ├── news.ts
-│   │   ├── partners.ts
-│   │   └── clients.ts
-│   ├── messages/                    # i18n translations
-│   │   ├── en.json
-│   │   └── ja.json
-│   └── types/
-│       └── index.ts                 # TypeScript types
-├── public/
-│   ├── assets/                      # Images, logos
-│   └── favicon.ico
+├── .husky/                          # Git hooks (Husky)
 ├── specs/                           # Project specifications
 │   └── 001-ekoi-corporate-website/
 │       ├── spec.md
 │       ├── plan.md
+│       ├── quickstart.md
 │       ├── research.md
 │       ├── data-model.md
+│       ├── constitutional-compliance.md
+│       ├── checklists/
 │       └── contracts/
-├── next.config.js
-├── tailwind.config.js
-├── tsconfig.json
-└── package.json
+├── src/
+│   ├── app/                         # Next.js App Router
+│   │   ├── layout.tsx               # Root layout
+│   │   ├── page.tsx                 # Homepage
+│   │   ├── page.module.css          # Page styles
+│   │   ├── globals.css              # Global styles
+│   │   └── favicon.ico              # Favicon
+│   └── lib/
+│       └── env/                     # T3 Env configuration
+│           ├── client.ts            # Client-side env vars
+│           └── server.ts            # Server-side env vars
+├── public/                          # Static assets
+│   └── next.svg
+├── workflows/                       # CI/CD workflows
+│   └── ci.yml
+├── .editorconfig                    # Editor configuration
+├── .eslintrc.json                   # ESLint configuration  
+├── .prettierrc.json                 # Prettier configuration
+├── .gitignore                       # Git ignore rules
+├── .nvmrc                           # Node version
+├── .commitlintrc.json               # Commit lint configuration
+├── .lintstagedrc.js                 # Lint-staged configuration
+├── eslint.config.mjs                # ESLint config (ESM)
+├── next.config.ts                   # Next.js configuration
+├── redirects.ts                     # Redirects configuration
+├── tsconfig.json                    # TypeScript configuration
+├── package.json                     # Dependencies
+├── pnpm-lock.yaml                   # pnpm lock file
+└── README.md                        # Project README
 ```
+
+**Note:** As you build out features, you'll add directories like:
+- `src/components/` - React components
+- `src/data/` - Content data files
+- `src/types/` - TypeScript type definitions
+- `src/app/api/` - API routes
 
 ## Key Technologies
 
-- **Framework:** Next.js 14+ (App Router)
-- **Language:** TypeScript
+### Currently Configured
+
+- **Framework:** Next.js 16 (App Router)
+- **Language:** TypeScript 5.9
+- **Runtime:** React 19.2
+- **Validation:** Zod 4.1
+- **Environment Variables:** T3 Env (type-safe)
+- **Code Quality:** ESLint 9, Prettier 3.6
+- **Git Hooks:** Husky 9.1
+- **Commit Linting:** Commitlint
+- **Staged Files Linting:** lint-staged
+
+### To Be Added (Per Plan)
+
 - **Styling:** Tailwind CSS
 - **Components:** shadcn/ui (Radix UI + Tailwind)
 - **Forms:** react-hook-form + Zod
@@ -147,15 +134,26 @@ ekoi-corp-new/
 
 ## Development Workflow
 
-### Adding shadcn/ui Components
+### Initial Setup Tasks
 
-```bash
-# Add a new component
-npx shadcn-ui@latest add button
+Before starting feature development, you'll need to:
 
-# Add multiple components
-npx shadcn-ui@latest add button input textarea select
-```
+1. **Install Tailwind CSS:**
+   ```bash
+   pnpm add -D tailwindcss postcss autoprefixer
+   pnpm tailwindcss init -p
+   ```
+
+2. **Initialize shadcn/ui:**
+   ```bash
+   pnpm dlx shadcn@latest init
+   ```
+
+3. **Add shadcn/ui Components (as needed):**
+   ```bash
+   pnpm dlx shadcn@latest add button
+   pnpm dlx shadcn@latest add input textarea select
+   ```
 
 Components will be added to `src/components/ui/`.
 
@@ -164,14 +162,14 @@ Components will be added to `src/components/ui/`.
 1. **Create page file:**
    ```bash
    # Example: Create "About" page
-   touch src/app/[locale]/about/page.tsx
+   mkdir -p src/app/about
+   touch src/app/about/page.tsx
    ```
 
 2. **Implement page with metadata:**
    ```typescript
-   // src/app/[locale]/about/page.tsx
-   import {Metadata} from 'next';
-   import {useTranslations} from 'next-intl';
+   // src/app/about/page.tsx
+   import type { Metadata } from 'next';
    
    export const metadata: Metadata = {
      title: 'About Us | EKOI',
@@ -179,33 +177,18 @@ Components will be added to `src/components/ui/`.
    };
    
    export default function AboutPage() {
-     const t = useTranslations('about');
-     
      return (
        <div>
-         <h1>{t('title')}</h1>
+         <h1>About EKOI</h1>
          {/* Page content */}
        </div>
      );
    }
    ```
 
-3. **Add translations:**
-   ```json
-   // src/messages/en.json
-   {
-     "about": {
-       "title": "About EKOI"
-     }
-   }
-   
-   // src/messages/ja.json
-   {
-     "about": {
-       "title": "EKOIについて"
-     }
-   }
-   ```
+**Note:** Once you implement i18n with next-intl, the structure will change to:
+- `src/app/[locale]/about/page.tsx`
+- Translation files in `src/messages/`
 
 ### Adding Content
 
@@ -323,26 +306,26 @@ export function Component() {
 ### Running Linter
 
 ```bash
-npm run lint
+pnpm lint
 
 # Fix automatically
-npm run lint:fix
+pnpm lint:fix
 ```
 
 ### Type Checking
 
 ```bash
 # Check types
-npm run type-check
+pnpm type-check
 
 # or just build (includes type check)
-npm run build
+pnpm build
 ```
 
 ### Building for Production
 
 ```bash
-npm run build
+pnpm build
 ```
 
 This will:
@@ -354,27 +337,11 @@ This will:
 
 ### Analyzing Bundle Size
 
-```bash
-npm run analyze
-```
-
-Opens bundle analyzer in browser showing:
-- Chunk sizes
-- Module dependencies
-- Optimization opportunities
+To be configured with `@next/bundle-analyzer`.
 
 ### Running Tests
 
-```bash
-# Unit tests
-npm test
-
-# E2E tests
-npm run test:e2e
-
-# Test coverage
-npm run test:coverage
-```
+Testing framework to be set up in Phase 6 of the implementation plan.
 
 ## Debugging
 
@@ -410,22 +377,24 @@ Create `.vscode/launch.json`:
 rm -rf .next
 
 # Reinstall dependencies
-rm -rf node_modules
-npm install
+rm -rf node_modules pnpm-lock.yaml
+pnpm install
 ```
 
 **Issue: Tailwind styles not applying**
 ```bash
 # Check tailwind.config.js content paths
 # Restart dev server
-npm run dev
+pnpm dev
 ```
+
+**Note:** Tailwind CSS needs to be installed first (see Initial Setup Tasks above).
 
 **Issue: TypeScript errors**
 ```bash
 # Regenerate TypeScript cache
 rm -rf .next
-npm run dev
+pnpm dev
 ```
 
 **Issue: Environment variables not loading**
@@ -561,23 +530,22 @@ Next.js handles caching automatically:
 
 ```bash
 # Development
-npm run dev                 # Start dev server
-npm run build              # Build for production
-npm run start              # Start production server
-npm run lint               # Run ESLint
-npm run type-check         # Run TypeScript check
+pnpm dev                   # Start dev server
+pnpm build                 # Build for production
+pnpm start                 # Start production server
+pnpm lint                  # Run ESLint
+pnpm lint:fix              # Run ESLint with auto-fix
+pnpm type-check            # Run TypeScript check
+pnpm format                # Format code with Prettier
+pnpm format:check          # Check formatting without changes
 
-# Component Management
-npx shadcn-ui@latest add <component>  # Add shadcn/ui component
+# Component Management (after setup)
+pnpm dlx shadcn@latest add <component>  # Add shadcn/ui component
 
-# Testing
-npm test                   # Run unit tests
-npm run test:e2e          # Run E2E tests
-npm run test:coverage     # Generate coverage report
-
-# Utilities
-npm run analyze           # Analyze bundle size
-npm run clean             # Clean build artifacts
+# Testing (to be configured)
+pnpm test                  # Run unit tests
+pnpm test:e2e              # Run E2E tests
+pnpm test:coverage         # Generate coverage report
 ```
 
 Happy coding! 🚀

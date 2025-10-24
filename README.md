@@ -24,19 +24,67 @@ Our project is guided by seven core principles:
 
 ### Prerequisites
 
-[Add your project-specific prerequisites here]
+- **Node.js** 24 or later
+- **pnpm** 10 (package manager)
+- **Git** for version control
 
 ### Installation
 
-[Add your installation instructions here]
+```bash
+# Clone the repository
+git clone https://github.com/ekoi/ekoi-corp-new.git
+cd ekoi-corp-new
+
+# Install dependencies
+pnpm install
+```
 
 ### Development
 
-[Add your development workflow here]
+```bash
+# Start development server
+pnpm dev
+```
+
+Open [http://localhost:3000](http://localhost:3000) with your browser.
+
+### Available Scripts
+
+- `pnpm dev` - Start development server
+- `pnpm build` - Build for production
+- `pnpm start` - Start production server
+- `pnpm type-check` - Run TypeScript type checking
+- `pnpm lint` - Run ESLint
+- `pnpm lint:fix` - Run ESLint with auto-fix
+- `pnpm format` - Format code with Prettier
+- `pnpm format:check` - Check code formatting
+
+### Technology Stack
+
+**Currently Configured:**
+
+- Next.js 16 (App Router)
+- React 19.2
+- TypeScript 5.9
+- Zod 4.1 (validation)
+- T3 Env (type-safe environment variables)
+- ESLint 9 + Prettier 3.6
+- Husky + Commitlint
+
+**To Be Added:**
+
+- Tailwind CSS (styling)
+- shadcn/ui (components)
+- next-intl (internationalization)
+- react-hook-form (forms)
+
+See [specs/001-ekoi-corporate-website/quickstart.md](specs/001-ekoi-corporate-website/quickstart.md) for detailed setup instructions.
+
+> **Note:** The `ekoi-corp-web/README.md` file contains documentation about the TypeScript Next.js Starter template this project is based on. It can be kept as reference or removed once you're familiar with the setup.
 
 ## Project Structure
 
-```
+```text
 ekoi-corp-new/
 ├── .specify/                    # Project governance and templates
 │   ├── memory/
