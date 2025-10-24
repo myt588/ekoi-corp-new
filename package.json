@@ -13,6 +13,10 @@
     "gpu-servers",
     "corporate-website"
   ],
+  "engines": {
+    "node": ">=20.11.1",
+    "pnpm": ">=10.0.0"
+  },
   "scripts": {
     "dev": "next dev",
     "build": "next build",
