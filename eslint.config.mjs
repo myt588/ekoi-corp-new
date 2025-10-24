@@ -40,6 +40,28 @@ const eslintConfig = defineConfig([
     'out/**',
     'build/**',
     'next-env.d.ts',
+    // Dependencies
+    'node_modules/**',
+    // Additional build outputs
+    'dist/**',
+    // Coverage
+    'coverage/**',
+    // Environment files
+    '.env*',
+    // Logs
+    '*.log',
+    // IDE directories
+    '.vscode/**',
+    '.idea/**',
+    // OS files
+    '.DS_Store',
+    'Thumbs.db',
+    // Lock files
+    'pnpm-lock.yaml',
+    'package-lock.json',
+    'yarn.lock',
+    // Vercel
+    '.vercel/**',
   ]),
 ]);
 

@@ -1,0 +1,24 @@
+{
+  "navigation": {
+    "home": "Home",
+    "products": "Products",
+    "solutions": "Solutions",
+    "whyUs": "Why Us",
+    "news": "News",
+    "contact": "Contact"
+  },
+  "common": {
+    "learnMore": "Learn More",
+    "contactUs": "Contact Us",
+    "readMore": "Read More",
+    "getStarted": "Get Started",
+    "loading": "Loading...",
+    "error": "An error occurred",
+    "close": "Close",
+    "submit": "Submit",
+    "cancel": "Cancel",
+    "back": "Back",
+    "next": "Next"
+  }
+}
+
