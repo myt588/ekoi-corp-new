@@ -1,4 +1,5 @@
 import Link from 'next/link';
+
 import { Logo } from '@/components/ui/Logo';
 
 export function Footer() {
@@ -37,9 +38,7 @@ export function Footer() {
           {/* Logo and description */}
           <div className="col-span-1">
             <Logo />
-            <p className="mt-4 text-sm text-muted-foreground">
-              AI Infrastructure Solutions for Enterprise
-            </p>
+            <p className="mt-4 text-sm text-muted-foreground">AI Infrastructure Solutions for Enterprise</p>
           </div>
 
           {/* Sitemap sections */}
@@ -64,20 +63,12 @@ export function Footer() {
 
         {/* Bottom section */}
         <div className="mt-12 pt-8 border-t flex flex-col md:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground">
-            © {currentYear} EKOI. All rights reserved.
-          </p>
+          <p className="text-sm text-muted-foreground">© {currentYear} EKOI. All rights reserved.</p>
           <div className="flex gap-6">
-            <Link
-              href="/privacy"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
+            <Link href="/privacy" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Privacy Policy
             </Link>
-            <Link
-              href="/terms"
-              className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-            >
+            <Link href="/terms" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
               Terms of Service
             </Link>
           </div>
@@ -86,4 +77,3 @@ export function Footer() {
     </footer>
   );
 }
-

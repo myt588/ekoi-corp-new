@@ -1,5 +1,5 @@
-import Link from 'next/link';
 import { ChevronRight, Home } from 'lucide-react';
+import Link from 'next/link';
 
 interface BreadcrumbItem {
   label: string;
@@ -36,10 +36,7 @@ export function Breadcrumbs({ items, locale }: BreadcrumbsProps) {
               {isLast || !item.href ? (
                 <span className="font-medium">{item.label}</span>
               ) : (
-                <Link
-                  href={item.href}
-                  className="text-muted-foreground hover:text-foreground transition-colors"
-                >
+                <Link href={item.href} className="text-muted-foreground hover:text-foreground transition-colors">
                   {item.label}
                 </Link>
               )}
@@ -50,4 +47,3 @@ export function Breadcrumbs({ items, locale }: BreadcrumbsProps) {
     </nav>
   );
 }
-

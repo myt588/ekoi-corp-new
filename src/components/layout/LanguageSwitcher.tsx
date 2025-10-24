@@ -1,8 +1,9 @@
 'use client';
 
-import { usePathname, useRouter } from 'next/navigation';
-import { Button } from '@/components/ui/button';
 import { Globe } from 'lucide-react';
+import { usePathname, useRouter } from 'next/navigation';
+
+import { Button } from '@/components/ui/button';
 
 interface LanguageSwitcherProps {
   currentLocale: string;
@@ -40,4 +41,3 @@ export function LanguageSwitcher({ currentLocale }: LanguageSwitcherProps) {
     </div>
   );
 }
-

@@ -1,8 +1,9 @@
 'use client';
 
-import { useState } from 'react';
+import { Menu } from 'lucide-react';
 import Link from 'next/link';
-import { Menu, X } from 'lucide-react';
+import { useState } from 'react';
+
 import { Button } from '@/components/ui/button';
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet';
 
@@ -43,4 +44,3 @@ export function MobileNav() {
     </Sheet>
   );
 }
-
